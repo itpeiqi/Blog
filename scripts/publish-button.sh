@@ -31,7 +31,7 @@ step() {
 }
 
 changed_markdown_posts() {
-  git status --porcelain -- content/posts | while IFS= read -r line; do
+  git -c core.quotePath=false status --porcelain -- content/posts | while IFS= read -r line; do
     status="${line:0:2}"
     path="${line:3}"
 
@@ -47,7 +47,7 @@ changed_markdown_posts() {
 
 run_publish() {
   step 1 "检查新增、修改、删除的文件"
-  git status --short
+  git -c core.quotePath=false status --short
 
   posts=()
   while IFS= read -r post; do
@@ -74,7 +74,7 @@ run_publish() {
 
   step 4 "准备本次变更并提交"
   git add -u
-  git status --porcelain -- .gitignore README.md archetypes content drafts hugo.toml layouts scripts static 发布博客.command | while IFS= read -r line; do
+  git -c core.quotePath=false status --porcelain -- .gitignore README.md archetypes content drafts hugo.toml layouts scripts static 发布博客.command | while IFS= read -r line; do
     path="${line:3}"
     if [[ -e "$path" ]]; then
       git add "$path"
@@ -87,7 +87,7 @@ run_publish() {
   fi
 
   echo "本次将提交："
-  git diff --cached --stat
+  git -c core.quotePath=false diff --cached --stat
   git commit -m "Publish blog update $(date '+%Y-%m-%d %H:%M')"
 
   step 5 "推送到 GitHub，等待 Cloudflare 自动部署"
