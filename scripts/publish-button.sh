@@ -94,15 +94,17 @@ run_publish() {
   git push
 }
 
-if run_publish >"$LOG_FILE" 2>&1; then
+echo "博客发布开始。"
+echo "日志文件：$LOG_FILE"
+echo
+
+if run_publish 2>&1 | tee "$LOG_FILE"; then
   show_success $'发布成功！Cloudflare Pages 会自动部署。\n\n网站地址：\nhttps://blog-auj.pages.dev'
-  cat "$LOG_FILE"
   exit 0
 else
-  code=$?
+  code=${PIPESTATUS[0]}
   if [[ "$code" == "2" ]]; then
     show_success $'没有新内容需要发布。\n\n你可以继续写文章，写完后再双击发布。'
-    cat "$LOG_FILE"
     exit 0
   fi
 
