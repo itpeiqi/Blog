@@ -1,3 +1,10 @@
+---
+title: "我的博客"
+date: 2026-07-05T19:54:52+0800
+description: ""
+draft: false
+typora-root-url: ../../static
+---
 # 我的博客
 
 这是一个 Hugo 格式的个人博客，可以部署到 Cloudflare Pages。
