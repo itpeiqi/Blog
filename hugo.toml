@@ -1,0 +1,12 @@
+baseURL = "https://example.com/"
+locale = "zh-cn"
+title = "我的博客"
+
+[params]
+  author = "你的名字"
+  description = "记录学习、生活和慢慢变清楚的想法。"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

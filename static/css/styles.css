@@ -1,0 +1,158 @@
+:root {
+  color-scheme: light;
+  --bg: #fbfaf7;
+  --text: #25231f;
+  --muted: #706b62;
+  --line: #ded8cc;
+  --accent: #1f7a6f;
+  --accent-strong: #15584f;
+  --panel: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-serif, Georgia, "Times New Roman", serif;
+  line-height: 1.75;
+}
+
+a {
+  color: var(--accent-strong);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
+.site {
+  width: min(920px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.site-header {
+  padding: 34px 0 22px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: baseline;
+}
+
+.brand {
+  font-size: 22px;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.nav {
+  display: flex;
+  gap: 16px;
+  font-size: 15px;
+}
+
+.hero {
+  padding: 58px 0 42px;
+}
+
+.hero h1 {
+  max-width: 760px;
+  margin: 0;
+  font-size: clamp(38px, 8vw, 76px);
+  line-height: 1.02;
+  letter-spacing: 0;
+}
+
+.hero p {
+  max-width: 620px;
+  margin: 22px 0 0;
+  color: var(--muted);
+  font-size: 19px;
+}
+
+.post-list {
+  display: grid;
+  gap: 18px;
+  padding: 12px 0 64px;
+}
+
+.post-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 22px;
+}
+
+.post-card h2 {
+  margin: 0 0 8px;
+  font-size: 25px;
+  line-height: 1.25;
+}
+
+.post-card h2 a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.post-card h2 a:hover {
+  color: var(--accent-strong);
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.post-card p {
+  margin: 12px 0 0;
+  color: var(--muted);
+}
+
+.article {
+  max-width: 720px;
+  padding: 48px 0 72px;
+}
+
+.article h1 {
+  margin: 0 0 10px;
+  font-size: clamp(34px, 6vw, 54px);
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.article h2 {
+  margin-top: 34px;
+  line-height: 1.25;
+}
+
+.article p,
+.article li {
+  font-size: 18px;
+}
+
+.article code {
+  background: #eee8dc;
+  border-radius: 4px;
+  padding: 0.1em 0.25em;
+}
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 24px 0 36px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .hero {
+    padding-top: 42px;
+  }
+}
