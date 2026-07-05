@@ -11,7 +11,7 @@ summaryLength = 0
   home = ["HTML", "RSS"]
 
 [params]
-  author = "李双洁"
+  author = ""
   description = "记录学习、生活和慢慢变清楚的想法。"
 
 [markup]
