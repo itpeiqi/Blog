@@ -1,0 +1,21 @@
+{{ define "main" }}
+<main>
+  <section class="hero">
+    <p class="eyebrow">我的小小花园</p>
+    <h1>{{ site.Title }}</h1>
+    <p>{{ site.Params.description }}</p>
+  </section>
+
+  <section class="post-list" aria-label="文章列表">
+    {{ range first 10 (where site.RegularPages "Section" "posts") }}
+      <article class="post-card">
+        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        <div class="meta">{{ .Date.Format "2006-01-02" }}</div>
+        <p>{{ .Description }}</p>
+      </article>
+    {{ else }}
+      <p>还没有文章。</p>
+    {{ end }}
+  </section>
+</main>
+{{ end }}

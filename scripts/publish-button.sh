@@ -46,6 +46,9 @@ changed_markdown_posts() {
 }
 
 run_publish() {
+  local build_dir="${TMPDIR:-/private/tmp}/blog-public-$$"
+  trap 'rm -rf "$build_dir"' EXIT
+
   step 1 "检查新增、修改、删除的文件"
   git -c core.quotePath=false status --short
 
@@ -70,11 +73,11 @@ run_publish() {
   fi
 
   step 3 "运行 Hugo 构建检查"
-  hugo
+  hugo --destination "$build_dir" --noBuildLock --noTimes --noChmod
 
   step 4 "准备本次变更并提交"
   git add -u
-  git -c core.quotePath=false status --porcelain -- .gitignore README.md archetypes assets content drafts hugo.toml layouts scripts static themes 发布博客.command | while IFS= read -r line; do
+  git -c core.quotePath=false status --porcelain -- .gitignore README.md archetypes content drafts hugo.toml layouts scripts static 发布博客.command | while IFS= read -r line; do
     path="${line:3}"
     if [[ -e "$path" ]]; then
       git add "$path"

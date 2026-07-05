@@ -2,6 +2,6 @@ public/
 resources/
 .hugo_build.lock
 tools/
-themes/congo/
-themes/congo-vendor/
+themes/
+assets/
 .DS_Store

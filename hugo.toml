@@ -1,7 +1,5 @@
 baseURL = "https://blog-auj.pages.dev/"
-theme = "congo-garden"
-defaultContentLanguage = "zh-hans"
-locale = "zh-hans"
+locale = "zh-cn"
 title = "我的博客"
 enableRobotsTXT = true
 summaryLength = 0
@@ -10,83 +8,11 @@ summaryLength = 0
   pagerSize = 10
 
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "RSS"]
 
 [params]
-  colorScheme = "cherry"
-  defaultAppearance = "light"
-  autoSwitchAppearance = false
-  defaultThemeColor = "#fff1f4"
+  author = "李双洁"
   description = "记录学习、生活和慢慢变清楚的想法。"
-  mainSections = ["posts"]
-  dateFormat = "2006年1月2日"
-  enableSearch = true
-  enableCodeCopy = true
-  enableImageLazyLoading = true
-  enableImageWebp = true
-
-  [params.author]
-    name = "李双洁"
-    headline = "写一点生活，也写一点正在变清楚的自己。"
-    bio = "这是我的个人博客。"
-    links = [
-      { github = "https://github.com/itpeiqi" },
-    ]
-
-  [params.header]
-    layout = "hybrid"
-    showTitle = true
-
-  [params.footer]
-    showCopyright = true
-    showThemeAttribution = false
-    showAppearanceSwitcher = true
-    showScrollToTop = true
-
-  [params.homepage]
-    layout = "profile"
-    showRecent = true
-    recentLimit = 6
-
-  [params.article]
-    showDate = true
-    showDateUpdated = false
-    showAuthor = true
-    showBreadcrumbs = true
-    showDraftLabel = false
-    showHeadingAnchors = true
-    showPagination = true
-    showReadingTime = true
-    showTableOfContents = true
-    showTaxonomies = true
-    showWordCount = true
-
-  [params.list]
-    showBreadcrumbs = true
-    showSummary = true
-    groupByYear = true
-
-[menus]
-  [[menus.main]]
-    name = "首页"
-    pageRef = "/"
-    weight = 10
-
-  [[menus.main]]
-    name = "文章"
-    pageRef = "posts"
-    weight = 20
-
-  [[menus.main]]
-    name = "关于"
-    pageRef = "about"
-    weight = 30
-
-  [[menus.main]]
-    identifier = "搜索"
-    weight = 99
-    [menus.main.params]
-      action = "search"
 
 [markup]
   [markup.goldmark]
