@@ -32,3 +32,17 @@ hugo server
 - Framework preset：Hugo
 - Build command：`hugo`
 - Build output directory：`public`
+
+## 自动发文
+
+新建一篇文章：
+
+```bash
+./scripts/new-post.sh "文章标题"
+```
+
+发布到 GitHub，并触发 Cloudflare Pages 自动部署：
+
+```bash
+./scripts/publish.sh
+```
