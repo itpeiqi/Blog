@@ -61,9 +61,13 @@ run_publish() {
   fi
 
   step 2 "只整理新增或修改过的文章"
-  while IFS= read -r post; do
-    ./scripts/prepare-post.py "$post"
-  done < <(printf '%s\n' "${posts[@]}")
+  if [[ "${#posts[@]}" -eq 0 ]]; then
+    echo "跳过：没有文章需要整理。"
+  else
+    while IFS= read -r post; do
+      ./scripts/prepare-post.py "$post"
+    done < <(printf '%s\n' "${posts[@]}")
+  fi
 
   step 3 "运行 Hugo 构建检查"
   hugo
