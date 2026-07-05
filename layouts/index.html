@@ -1,13 +1,14 @@
 {{ define "main" }}
 <main>
   <section class="hero">
-    <p class="eyebrow">我的小小花园</p>
+    <p class="eyebrow">静态 Hugo · 动态搜索</p>
     <h1>{{ site.Title }}</h1>
     <p>{{ site.Params.description }}</p>
     <div class="hero-actions">
       <a class="button button-primary" href="/search/">打开搜索</a>
-      <p class="hero-note">静态 Hugo + 即时搜索 + Cloudflare 自动发布</p>
+      <a class="button button-secondary" href="/posts/">浏览文章</a>
     </div>
+    <p class="hero-note">静态底座，搜索可用，发布自动化。</p>
   </section>
 
   <section class="post-list" aria-label="文章列表">

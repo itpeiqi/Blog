@@ -1,11 +1,11 @@
 :root {
   color-scheme: light;
-  --bg: #f5f7fa;
-  --surface: rgba(255, 255, 255, 0.78);
+  --bg: #f7f8fb;
+  --surface: rgba(255, 255, 255, 0.72);
   --surface-strong: #ffffff;
   --text: #111827;
   --muted: #6b7280;
-  --line: rgba(17, 24, 39, 0.08);
+  --line: rgba(17, 24, 39, 0.07);
   --accent: #0a84ff;
   --accent-strong: #0057d9;
 }
@@ -22,8 +22,8 @@ html {
 body {
   margin: 0;
   background:
-    radial-gradient(circle at top, rgba(10, 132, 255, 0.08), transparent 34rem),
-    linear-gradient(180deg, #f7f9fc 0%, #eef3f9 100%);
+    radial-gradient(circle at top, rgba(10, 132, 255, 0.05), transparent 34rem),
+    linear-gradient(180deg, #fafbfc 0%, #eef2f7 100%);
   color: var(--text);
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
   line-height: 1.7;
@@ -39,7 +39,7 @@ a:hover {
 }
 
 .site {
-  width: min(980px, calc(100% - 32px));
+  width: min(960px, calc(100% - 32px));
   margin: 0 auto;
 }
 
@@ -49,16 +49,16 @@ a:hover {
   z-index: 10;
   margin-top: 16px;
   margin-bottom: 24px;
-  padding: 16px 20px;
+  padding: 15px 20px;
   display: flex;
   justify-content: space-between;
   gap: 18px;
   align-items: center;
   background: var(--surface);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 22px;
-  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
-  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+  backdrop-filter: blur(18px);
 }
 
 .brand {
@@ -81,7 +81,7 @@ a:hover {
 }
 
 .hero {
-  padding: 64px 0 32px;
+  padding: 52px 0 28px;
 }
 
 .eyebrow {
@@ -98,16 +98,16 @@ a:hover {
 
 .hero h1 {
   margin: 0;
-  font-size: 68px;
-  line-height: 1.04;
-  letter-spacing: -0.04em;
+  font-size: 60px;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
 }
 
 .hero p {
   max-width: 640px;
-  margin: 18px 0 0;
+  margin: 16px 0 0;
   color: var(--muted);
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .hero-actions {
@@ -115,7 +115,7 @@ a:hover {
   flex-wrap: wrap;
   align-items: center;
   gap: 14px;
-  margin-top: 28px;
+  margin-top: 24px;
 }
 
 .button {
@@ -140,6 +140,17 @@ a:hover {
   color: #fff;
 }
 
+.button-secondary {
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--text);
+  border-color: rgba(17, 24, 39, 0.08);
+}
+
+.button-secondary:hover {
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--text);
+}
+
 .hero-note {
   margin: 0;
   color: var(--muted);
@@ -148,16 +159,16 @@ a:hover {
 
 .post-list {
   display: grid;
-  gap: 18px;
-  padding: 16px 0 72px;
+  gap: 14px;
+  padding: 14px 0 72px;
 }
 
 .post-card {
   background: var(--surface-strong);
   border: 1px solid var(--line);
-  border-radius: 22px;
-  padding: 24px;
-  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.05);
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.045);
 }
 
 .post-card h2 {
@@ -179,7 +190,7 @@ a:hover {
 
 .article {
   max-width: 760px;
-  padding: 48px 0 80px;
+  padding: 44px 0 80px;
 }
 
 .article h1 {
@@ -338,11 +349,11 @@ a:hover {
   }
 
   .hero {
-    padding-top: 36px;
+    padding-top: 34px;
   }
 
   .hero h1 {
-    font-size: 44px;
+    font-size: 42px;
   }
 
   .article h1 {
