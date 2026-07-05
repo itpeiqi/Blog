@@ -46,3 +46,13 @@ hugo server
 ```bash
 ./scripts/publish.sh
 ```
+
+## 整理已写好的文章
+
+如果文章是自己新建的，没有 Hugo 抬头，或者里面插了 Typora 本地图片，运行：
+
+```bash
+./scripts/prepare-post.py content/posts/文章文件名.md
+```
+
+它会自动补齐 Hugo 抬头，并把图片整理到 `static/images/文章名/` 里面，按 `1.jpg`、`2.jpg` 编号。
