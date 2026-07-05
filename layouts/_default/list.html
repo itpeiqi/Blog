@@ -4,7 +4,8 @@
   {{ .Content }}
 
   <section class="post-list" aria-label="文章列表">
-    {{ range .Pages }}
+    {{ $pages := .Pages.ByDate.Reverse }}
+    {{ range $pages }}
       <article class="post-card">
         <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
         <div class="meta">{{ .Date.Format "2006-01-02" }}</div>

@@ -1,0 +1,23 @@
+{{ define "main" }}
+<main class="article search-page">
+  <section class="search-hero">
+    <p class="eyebrow">动态功能</p>
+    <h1>{{ .Title }}</h1>
+    <p>{{ .Description }}</p>
+  </section>
+
+  <section class="search-panel" aria-label="站内搜索">
+    <label class="search-field" for="search-input">
+      <span>搜索文章</span>
+      <input id="search-input" type="search" placeholder="输入标题、摘要或关键词">
+    </label>
+    <div class="search-meta">
+      <span id="search-count">正在加载文章索引…</span>
+    </div>
+    <div id="search-results" class="search-results" aria-live="polite"></div>
+  </section>
+
+  {{ .Content }}
+</main>
+<script src="/js/search.js" defer></script>
+{{ end }}
