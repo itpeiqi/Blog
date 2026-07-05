@@ -35,7 +35,7 @@ run_publish() {
   hugo
 
   echo "准备提交文件..."
-  git add .gitignore README.md archetypes content drafts hugo.toml layouts scripts static
+  git add .gitignore README.md archetypes content drafts hugo.toml layouts scripts static 发布博客.command
 
   if git diff --cached --quiet; then
     echo "没有发现需要发布的新内容。"
@@ -50,13 +50,13 @@ run_publish() {
 }
 
 if run_publish >"$LOG_FILE" 2>&1; then
-  show_success "发布成功！Cloudflare Pages 会自动部署。\n\n网站地址：\nhttps://blog-auj.pages.dev"
+  show_success $'发布成功！Cloudflare Pages 会自动部署。\n\n网站地址：\nhttps://blog-auj.pages.dev'
   cat "$LOG_FILE"
   exit 0
 else
   code=$?
   if [[ "$code" == "2" ]]; then
-    show_success "没有新内容需要发布。\n\n你可以继续写文章，写完后再双击发布。"
+    show_success $'没有新内容需要发布。\n\n你可以继续写文章，写完后再双击发布。'
     cat "$LOG_FILE"
     exit 0
   fi
