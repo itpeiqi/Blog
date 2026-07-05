@@ -3,6 +3,7 @@ title: "hhhh"
 date: 2026-07-05T19:23:36+0800
 description: ""
 draft: false
+typora-root-url: ../../static
 ---
 # hhhh
 

@@ -34,7 +34,7 @@ def first_title(lines: list[str], fallback: str) -> str:
 
 def ensure_frontmatter(text: str, title: str) -> str:
     if has_frontmatter(text):
-        return text
+        return ensure_typora_root(text)
 
     lines = text.splitlines()
     for index, line in enumerate(lines):
@@ -50,10 +50,24 @@ def ensure_frontmatter(text: str, title: str) -> str:
         f"date: {now}",
         'description: ""',
         "draft: false",
+        "typora-root-url: ../../static",
         "---",
         "",
     ])
     return frontmatter + "\n".join(lines).lstrip() + "\n"
+
+
+def ensure_typora_root(text: str) -> str:
+    end = text.find("\n---", 4)
+    if end == -1:
+        return text
+
+    frontmatter = text[:end]
+    rest = text[end:]
+    if re.search(r"^typora-root-url:", frontmatter, re.MULTILINE):
+        return text
+
+    return frontmatter + "\ntypora-root-url: ../../static" + rest
 
 
 def convert_to_jpg(source: Path, target: Path) -> None:
