@@ -21,4 +21,4 @@ niha
 
 222
 
-![Trixie Photography](https://th.bing.com/th/id/OIP.mGDw6CxPCgevhCeFO2oJ8QHaHa?&rs=1&pid=ImgDetMain&o=7&rm=3)
+![Trixie Photography](/images/hhhh/2.jpg)

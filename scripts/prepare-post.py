@@ -3,7 +3,9 @@ import re
 import shutil
 import subprocess
 import sys
+import tempfile
 import unicodedata
+import urllib.request
 from datetime import datetime
 from pathlib import Path
 
@@ -82,21 +84,57 @@ def convert_to_jpg(source: Path, target: Path) -> None:
         shutil.copy2(source, target)
 
 
+def download_image(url: str):
+    suffix = Path(url.split("?", 1)[0]).suffix or ".img"
+    handle = tempfile.NamedTemporaryFile(delete=False, suffix=suffix)
+    handle.close()
+    target = Path(handle.name)
+
+    request = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": "Mozilla/5.0",
+            "Referer": "https://www.bing.com/",
+        },
+    )
+
+    try:
+        with urllib.request.urlopen(request, timeout=30) as response:
+            target.write_bytes(response.read())
+    except Exception:
+        target.unlink(missing_ok=True)
+        return None
+
+    return target
+
+
 def prepare_images(text: str, post_file: Path, slug: str) -> str:
     image_dir = STATIC_IMAGES / slug
-    counter = 0
+    used_numbers = [
+        int(path.stem)
+        for path in image_dir.glob("*.jpg")
+        if path.stem.isdigit()
+    ] if image_dir.exists() else []
+    counter = max(used_numbers, default=0)
 
     def replace(match: re.Match[str]) -> str:
         nonlocal counter
         alt = match.group(1)
         raw_path = match.group(2).strip()
 
-        if raw_path.startswith(("http://", "https://", "/images/")):
+        if raw_path.startswith("/images/"):
             return match.group(0)
 
-        source = Path(raw_path)
-        if not source.is_absolute():
-            source = (post_file.parent / source).resolve()
+        temporary_source = None
+        if raw_path.startswith(("http://", "https://")):
+            source = download_image(raw_path)
+            temporary_source = source
+            if source is None:
+                return match.group(0)
+        else:
+            source = Path(raw_path)
+            if not source.is_absolute():
+                source = (post_file.parent / source).resolve()
 
         if not source.exists():
             return match.group(0)
@@ -104,6 +142,8 @@ def prepare_images(text: str, post_file: Path, slug: str) -> str:
         counter += 1
         target = image_dir / f"{counter}.jpg"
         convert_to_jpg(source, target)
+        if temporary_source is not None:
+            temporary_source.unlink(missing_ok=True)
         return f"![{alt}](/images/{slug}/{counter}.jpg)"
 
     return re.sub(r"!\[([^\]]*)\]\(([^)]+)\)", replace, text)
