@@ -147,7 +147,13 @@ def prepare_images(text: str, post_file: Path, slug: str) -> str:
             temporary_source.unlink(missing_ok=True)
         return f"![{alt}](/images/{slug}/{counter}.jpg)"
 
-    return re.sub(r"!\[([^\]]*)\]\(([^)]+)\)", replace, text)
+    parts = re.split(r"(```[\s\S]*?```)", text)
+    for index, part in enumerate(parts):
+        if part.startswith("```"):
+            continue
+        parts[index] = re.sub(r"!\[([^\]]*)\]\(([^)]+)\)", replace, part)
+
+    return "".join(parts)
 
 
 def main() -> int:

@@ -80,7 +80,7 @@ typora-root-url: ../../static
 文章里最终使用这样的图片路径：
 
 ```markdown
-![图片说明](/images/blog-publish-workflow/1.jpg)
+![图片说明](/images/你好/1.jpg)
 ```
 
 ## 双击发布
