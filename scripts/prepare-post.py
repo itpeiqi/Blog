@@ -122,11 +122,12 @@ def prepare_images(text: str, post_file: Path, slug: str) -> str:
         alt = match.group(1)
         raw_path = match.group(2).strip()
 
-        if raw_path.startswith("/images/"):
-            return match.group(0)
-
         temporary_source = None
-        if raw_path.startswith(("http://", "https://")):
+        if raw_path.startswith(f"/images/{slug}/"):
+            return match.group(0)
+        if raw_path.startswith("/images/"):
+            source = ROOT / "static" / raw_path.lstrip("/")
+        elif raw_path.startswith(("http://", "https://")):
             source = download_image(raw_path)
             temporary_source = source
             if source is None:
@@ -164,7 +165,7 @@ def main() -> int:
 
     text = post_file.read_text(encoding="utf-8")
     title = first_title(text.splitlines(), post_file.stem)
-    slug = slugify(title, post_file.stem)
+    slug = slugify(post_file.stem, post_file.stem)
 
     text = ensure_frontmatter(text, title)
     text = prepare_images(text, post_file, slug)
