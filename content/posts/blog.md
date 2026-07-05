@@ -3,6 +3,7 @@ title: 我的第一篇博客
 date: 2026-07-05
 description: 这里写一句话，简单介绍这篇文章。
 draft: false
+typora-root-url: ../../static
 ---
 
 # 我的第一篇博客

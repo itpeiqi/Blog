@@ -3,6 +3,7 @@ title: "博客自动化系统搭建记录"
 date: 2026-07-05T19:05:00+0800
 description: "记录这次把 Hugo 博客接入 GitHub 和 Cloudflare Pages，并整理出自动发文流程。"
 draft: false
+typora-root-url: ../../static
 ---
 
 # 博客自动化系统搭建记录
