@@ -5,7 +5,7 @@ cd "$(dirname "$0")/.."
 
 hugo
 
-git add .gitignore README.md archetypes content drafts hugo.toml layouts scripts static
+git add .gitignore README.md archetypes assets content drafts hugo.toml layouts scripts static themes 发布博客.command
 
 if git diff --cached --quiet; then
   echo "没有需要发布的新内容。"

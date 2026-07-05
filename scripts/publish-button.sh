@@ -74,7 +74,7 @@ run_publish() {
 
   step 4 "准备本次变更并提交"
   git add -u
-  git -c core.quotePath=false status --porcelain -- .gitignore README.md archetypes content drafts hugo.toml layouts scripts static 发布博客.command | while IFS= read -r line; do
+  git -c core.quotePath=false status --porcelain -- .gitignore README.md archetypes assets content drafts hugo.toml layouts scripts static themes 发布博客.command | while IFS= read -r line; do
     path="${line:3}"
     if [[ -e "$path" ]]; then
       git add "$path"
@@ -83,6 +83,15 @@ run_publish() {
 
   if git diff --cached --quiet; then
     echo "没有发现需要发布的新内容。"
+    if git rev-parse --abbrev-ref --symbolic-full-name "@{u}" >/dev/null 2>&1; then
+      ahead_count="$(git rev-list --count "@{u}..HEAD")"
+      if [[ "$ahead_count" -gt 0 ]]; then
+        echo "发现本地已有 $ahead_count 个提交尚未推送。"
+        step 5 "推送到 GitHub，等待 Cloudflare 自动部署"
+        git push
+        return 0
+      fi
+    fi
     return 2
   fi
 
