@@ -1,4 +1,4 @@
-baseURL = "https://blog-auj.pages.dev/"
+baseURL = "https://blog.leesy.cc/"
 locale = "zh-cn"
 title = "我的博客"
 enableRobotsTXT = true
