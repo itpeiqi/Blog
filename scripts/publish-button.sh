@@ -111,7 +111,7 @@ echo "日志文件：$LOG_FILE"
 echo
 
 if run_publish 2>&1 | tee "$LOG_FILE"; then
-  show_success $'发布成功！Cloudflare Pages 会自动部署。\n\n网站地址：\nhttps://blog-auj.pages.dev'
+  show_success $'发布成功！Cloudflare Pages 会自动部署。\n\n网站地址：\nhttps://blog.leesy.cc'
   exit 0
 else
   code=${PIPESTATUS[0]}
