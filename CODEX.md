@@ -41,13 +41,13 @@ The command runs:
 /Users/xuehua/Documents/blog/scripts/publish-button.sh
 ```
 
-The publishing script shows 5 steps:
+The publishing script shows progress by actual action, without a fixed total:
 
 1. Check added, modified, and deleted files.
 2. Prepare only newly added or modified Markdown posts.
 3. Run a Hugo build check.
 4. Stage and commit changes.
-5. Push to GitHub and let Cloudflare Pages deploy.
+5. Push to GitHub and let Cloudflare Pages deploy, only when there is something to push.
 
 On success, the dialog should show:
 
@@ -163,6 +163,7 @@ If the site is reachable at `blog.leesy.cc`, do not reconfigure DNS unless there
 - Removed duplicate article headings.
 - Updated success dialogs to show `https://blog.leesy.cc`.
 - Configured GitHub push authentication for smoother publishing.
+- Removed fixed `/5` progress labels from the publish script.
 
 ## Useful Commands
 
