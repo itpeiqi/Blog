@@ -10,7 +10,7 @@ show_success() {
   if [[ "${BLOG_PUBLISH_NO_DIALOG:-}" == "1" ]]; then
     echo "$message"
   else
-    osascript -e "display dialog \"$message\" buttons {\"好的\"} default button \"好的\" with title \"博客发布\""
+    osascript -e "display dialog \"$message\" buttons {\"好的\"} default button \"好的\" with title \"博客发布\"" >/dev/null
   fi
 }
 
@@ -19,7 +19,7 @@ show_failure() {
   if [[ "${BLOG_PUBLISH_NO_DIALOG:-}" == "1" ]]; then
     echo "$message"
   else
-    osascript -e "display dialog \"$message\" buttons {\"打开日志\", \"好的\"} default button \"好的\" with title \"博客发布失败\"" || true
+    osascript -e "display dialog \"$message\" buttons {\"打开日志\", \"好的\"} default button \"好的\" with title \"博客发布失败\"" >/dev/null || true
     open -a TextEdit "$LOG_FILE" || true
   fi
 }

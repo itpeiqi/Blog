@@ -164,6 +164,7 @@ If the site is reachable at `blog.leesy.cc`, do not reconfigure DNS unless there
 - Updated success dialogs to show `https://blog.leesy.cc`.
 - Configured GitHub push authentication for smoother publishing.
 - Removed fixed `/5` progress labels from the publish script.
+- Updated the one-click publish command to close its Terminal window automatically after completion.
 
 ## Useful Commands
 
